@@ -6,25 +6,28 @@
 const randomNumbers = []
 let number
     
-while (!randomNumbers.includes(number) || randomNumbers.length < 5) {
+while (randomNumbers.length < 5) {
     number = Math.floor(Math.random() * 10) + 1
-    randomNumbers.push(number)
+    if (!randomNumbers.includes(number)) {
+        randomNumbers.push(number)
+    }
 }
 alert(randomNumbers)
 console.log(randomNumbers)
 // 2. Far partire un countdown di 30 secondi
 setTimeout(function(){
     challenge()
-    console.log("timer")
 }, 3000)
 // 3. Allo scadere del tempo, creare 5 prompt in cui l'utente deve inserire i 5 numeri, uno per volta
 const attempts = []
 let attempt
 function challenge() {
-    for (let i = 0; i < 5; i++){
-        attempt = Number(prompt("Inserisci, uno per volta, i numeri mostrati in precedenza"))
-        attempts.push(attempt)
-    }
-    console.log(attempts)
+
+while (isNaN(attempt) || attempts.length < 5) {
+    attempt = Number(prompt("Inserisci, uno per volta, i numeri mostrati in precedenza"))
+    attempts.push(attempt)
+}
+
+console.log(attempts)
 }
 // 4. Creare alert con numero di numeri indovinati e quali
