@@ -21,13 +21,21 @@ setTimeout(function(){
 // 3. Allo scadere del tempo, creare 5 prompt in cui l'utente deve inserire i 5 numeri, uno per volta
 const attempts = []
 let attempt
+const guessed = []
+
 function challenge() {
 
-while (isNaN(attempt) || attempts.length < 5) {
-    attempt = Number(prompt("Inserisci, uno per volta, i numeri mostrati in precedenza"))
-    attempts.push(attempt)
-}
-
-console.log(attempts)
-}
+    while (isNaN(attempt) || attempts.length < 5) {
+        attempt = Number(prompt("Inserisci, uno per volta, i numeri mostrati in precedenza"))
+        attempts.push(attempt)
+        if (randomNumbers.includes(attempt)){
+            guessed.push(attempt)
+        }
+    }
 // 4. Creare alert con numero di numeri indovinati e quali
+console.log(attempts)
+console.log(guessed)
+    if (attempts.length === 5) {
+        alert(`Hai indovinato ${guessed.length} numeri: ${guessed}`)
+    }
+}
